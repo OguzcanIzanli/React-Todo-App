@@ -1,5 +1,5 @@
-import LoginForm from "./Components/Forms/Loginform/index.js";
-import Todo from "./Components/Forms/Todo/index.js"
+import LoginForm from "./Components/Loginform/index.js";
+import Todo from "./Components/Todo/index.js"
 import { useState } from "react";
 
 
