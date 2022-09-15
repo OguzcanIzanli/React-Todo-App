@@ -1,0 +1,26 @@
+.TodoPage {
+    text-align: center;
+    width: 50%;
+    margin: auto;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.todo {
+    width: 90%;
+    text-align: left;
+    overflow: hidden;
+}
+
+.todo.true {
+    color: red;
+    background-color: aqua;
+}
+
+.buttons {
+    width: 10%;
+    cursor: pointer;
+}
