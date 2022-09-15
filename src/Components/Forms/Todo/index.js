@@ -9,6 +9,7 @@ function Todo() {
     const [contents, setContents] = useState([]);
     const [todo, setTodo] = useState(todoInitialValue);
     const [changeTodo, setChangeTodo] = useState({});
+    const [selectedFilter, setSelectedFilter] = useState("All");
 
     useEffect(() => {
         fetch("https://6319c72e6b4c78d91b4337fb.mockapi.io/todos")
@@ -77,6 +78,11 @@ function Todo() {
         }).then(res => res.json()).then(res => console.log(JSON.stringify(res)));
     };
 
+    // FILTER
+    const filter = (e) => {
+        setSelectedFilter(e.target.value);
+    }
+
     return (
         <div className="TodoPage" >
             <div>
@@ -87,10 +93,16 @@ function Todo() {
                     <button onClick={addTodo} >Add</button>
                 </form>
 
+                <select onChange={filter}>
+                    <option value="All">All</option>
+                    <option value="true" >Completed</option>
+                    <option value="false" >Incompleted</option>
+                </select>
+
                 <div>
                     {
-                        (contents).map((item, index) =>
-                            <div className="content" key={index} >
+                        contents.filter(item => item.isCompleted.toString() === selectedFilter || "All" === selectedFilter).map((item, id) =>
+                            <div className="content" key={id} >
 
                                 {
                                     !item.isEditible
@@ -101,7 +113,6 @@ function Todo() {
                                             <input onChange={(e) => setChangeTodo(e.target.value)} value={changeTodo} />
                                         </form>
                                 }
-
                                 <div className="buttons" >
 
                                     {
@@ -109,7 +120,6 @@ function Todo() {
                                             ? <FiEdit onClick={() => editTodo(item.id, item.content)} />
                                             : <FiSave onClick={() => saveTodo(item.id)} />
                                     }
-
                                     <FiTrash2 onClick={() => deleteTodo(item.id)} />
                                 </div>
 
