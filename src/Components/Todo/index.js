@@ -4,7 +4,11 @@ import "./Todo.css";
 import Loading from "../Loading/index.js";
 
 const url = `https://6319c72e6b4c78d91b4337fb.mockapi.io/todos`
-const todoInitialValue = { content: "", isCompleted: false, id: "", isEditible: false };
+const todoInitialValue = {
+    content: "",
+    isCompleted: false, id: "",
+    isEditible: false
+};
 
 function Todo() {
 
@@ -129,7 +133,6 @@ function Todo() {
                         <option value="true" >Completed</option>
                         <option value="false" >Incompleted</option>
                     </select>
-
 
                 </form>
                 {isLoading ? <Loading /> :

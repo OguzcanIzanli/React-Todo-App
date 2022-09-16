@@ -5,7 +5,9 @@ import { useState } from "react";
 
 function App() {
 
-  const [user, setUser] = useState(localStorage.getItem("username") ? { username: localStorage.getItem("username") } : { username: "" });
+  const [user, setUser] = useState(localStorage.getItem("username")
+    ? { username: localStorage.getItem("username") }
+    : { username: "" });
 
   const Login = (details) => {
     setUser(details);
@@ -19,7 +21,6 @@ function App() {
 
   return (
     <>
-
       {(user.username !== "") ? (
         <div>
           <div className="welcome">
@@ -30,7 +31,6 @@ function App() {
           <Todo />
         </div>
       ) : (<LoginForm Login={Login} />)}
-
     </>
   );
 }

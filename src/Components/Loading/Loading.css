@@ -18,7 +18,7 @@
     height: 10px;
     width: 10px;
     border-radius: 50%;
-    background-color: black;
+    background-color: #850E35;
     margin-right: 10px;
     animation: ball 0.5s ease infinite alternate;
 }
