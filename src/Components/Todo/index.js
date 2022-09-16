@@ -74,7 +74,7 @@ function Todo() {
     const editTodo = async (id, content) => {
         setContents(prev => prev.map((item) => (item.id === id) ? { ...item, isEditible: !item.isEditible } : item));
         setChangeTodo(content);
-        console.log(changeTodo)
+        console.log(changeTodo);
     };
 
     const saveTodo = async (id) => {
@@ -99,56 +99,70 @@ function Todo() {
     };
 
     return (
-        <div className="TodoPage" >
-            <div>
+        <>
+            <div className="background">
+                <div className="shape"></div>
+                <div className="shape"></div>
+            </div>
+
+            <div className="container">
+
+
                 <h1>To Do List</h1>
 
-                {(error === "") ? <div><br /></div> : <div className="error" >{error}</div>}
+                <div className="error" >
+                    {(error === "") ? <div ><br /></div> : <div>{error}</div>}
+                </div>
 
-                <form>
-                    <input onChange={(e) => setTodo({ ...todo, content: e.target.value })} value={todo.content} />
-                    <button onClick={addTodo} >Add</button>
+                <form className="todoList">
+
+                    <input
+                        className="todo-input"
+                        onChange={(e) => setTodo({ ...todo, content: e.target.value })}
+                        value={todo.content}
+                        placeholder="A New To Do" />
+
+                    <button className="todo-button" onClick={addTodo} >Add</button>
+
+                    <select onChange={filter}>
+                        <option value="All">All</option>
+                        <option value="true" >Completed</option>
+                        <option value="false" >Incompleted</option>
+                    </select>
+
+
                 </form>
+                {isLoading ? <Loading /> :
+                    contents.filter(item => item.isCompleted.toString() === selectedFilter || "All" === selectedFilter).map((item) =>
+                        <div className="content" key={item.id} >
 
-                <select onChange={filter}>
-                    <option value="All">All</option>
-                    <option value="true" >Completed</option>
-                    <option value="false" >Incompleted</option>
-                </select>
+                            {
+                                !item.isEditible
+                                    ? <div className={`todo ${item.isCompleted}`}
+                                        value={!item.isCompleted}
+                                        onClick={() => isCompleted(item)}>
+                                        {item.content}
+                                    </div>
 
-                <div>
-
-                    {isLoading ? <Loading /> :
-                        contents.filter(item => item.isCompleted.toString() === selectedFilter || "All" === selectedFilter).map((item) =>
-                            <div className="content" key={item.id} >
+                                    : <form>
+                                        <input className="edit-input" onChange={(e) => setChangeTodo(e.target.value)}
+                                            value={changeTodo} />
+                                    </form>
+                            }
+                            <div className="buttons" >
 
                                 {
                                     !item.isEditible
-                                        ? <div className={`todo ${item.isCompleted}`}
-                                            value={!item.isCompleted}
-                                            onClick={() => isCompleted(item)}>
-                                            {item.content}
-                                        </div>
-
-                                        : <form>
-                                            <input onChange={(e) => setChangeTodo(e.target.value)}
-                                                value={changeTodo} />
-                                        </form>
+                                        ? <FiEdit className="button" onClick={() => editTodo(item.id, item.content)} />
+                                        : <FiSave className="button" onClick={() => saveTodo(item.id)} />
                                 }
-                                <div className="buttons" >
+                                <FiTrash2 className="button" onClick={() => deleteTodo(item.id)} />
+                            </div>
+                        </div>)
+                }
 
-                                    {
-                                        !item.isEditible
-                                            ? <FiEdit onClick={() => editTodo(item.id, item.content)} />
-                                            : <FiSave onClick={() => saveTodo(item.id)} />
-                                    }
-                                    <FiTrash2 onClick={() => deleteTodo(item.id)} />
-                                </div>
-                            </div>)
-                    }
-                </div>
             </div>
-        </div>
+        </>
     )
 }
 

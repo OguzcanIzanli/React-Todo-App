@@ -22,10 +22,10 @@ function App() {
 
       {(user.username !== "") ? (
         <div>
-          <div>
+          <div className="welcome">
             Welcome, {user.username}
             <br />
-            <button onClick={Logout}>Logout</button>
+            <button className="welcome-button" onClick={Logout}>Logout</button>
           </div>
           <Todo />
         </div>

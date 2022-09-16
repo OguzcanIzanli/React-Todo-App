@@ -21,25 +21,30 @@ function LoginForm({ Login }) {
 
 
     return (
-        <form className="Login" onSubmit={submitHandle} >
+        <div className="login">
 
-            <div className="Form" >
-
-                <h2>Login</h2>
-
-                {(error === "") ? <div><br /></div> : <div className="error" >{error}</div>}
-
-                <div className="form-inner" >
-
-                    <label htmlFor='userName'>Username: </label>
-                    <input type="text" onChange={(e) => setUser({ username: e.target.value })} value={user.username} />
-                    <br />
-                    <button>LOGIN</button>
-
-                </div>
+            <div className="background">
+                <div className="shape"></div>
+                <div className="shape"></div>
             </div>
 
-        </form>
+            <form className="login-form" onSubmit={submitHandle} >
+
+                <h3>Login Here</h3>
+
+                {(error === "") ? <div><br /></div> : <div >{error}</div>}
+
+                <label for="username">Username</label>
+
+                <input className="login-input"
+                    type="text"
+                    onChange={(e) => setUser({ username: e.target.value })}
+                    value={user.username} />
+
+                <button className="login-button" >Log In</button>
+
+            </form>
+        </div>
     )
 }
 

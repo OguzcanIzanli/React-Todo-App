@@ -1,26 +1,136 @@
-.TodoPage {
+.welcome {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.welcome-button {
+    margin-left: 8px;
+    background-color: white;
+    color: #080710;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+h1 {
     text-align: center;
-    width: 50%;
+    font-weight: 700;
+    font-size: 40px;
+    margin-bottom: 15px;
+    width: 580px;
+}
+
+.error {
+    text-align: center;
+    width: 580px;
+}
+
+.container {
+    margin-top: 20px;
+    backdrop-filter: blur(10px);
+    letter-spacing: 0.5px;
+    border-radius: 10px;
+    box-shadow: 0 0 4px rgba(8, 7, 16, 0.6);
+    padding-top: 15px;
+    padding-bottom: 20px;
+    width: 580px;
+    margin: 20px auto;
+}
+
+.todoList {
+    width: 540px;
     margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.todo-input {
+    width: 70%;
+    height: 20px;
+    padding: 1px 8px;
+    margin-right: 20px;
+    background-color: rgba(255, 255, 255, 0.07);
+    border-radius: 6px;
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.todo-button {
+    font-size: 14px;
+    width: 10%;
+    height: 26px;
+    margin-top: 15px;
+    margin-right: 50px;
+    background-color: white;
+    color: #080710;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+select {
+    background-color: transparent;
+    font-size: 14px;
+    cursor: pointer;
+    height: 25px;
+    width: 20%;
+    margin-top: 15px;
+    font-weight: 600;
+    border-radius: 6px;
 }
 
 .content {
+    height: 40px;
     display: flex;
+    width: 540px;
     justify-content: space-between;
+    margin: auto;
+    align-items: center;
 }
 
 .todo {
-    width: 90%;
-    text-align: left;
     overflow: hidden;
+    width: 90%;
+    margin: 9px;
+    border-radius: 15px;
+    padding: 4px;
 }
 
 .todo.true {
-    color: red;
-    background-color: aqua;
+    opacity: 0.7;
+    background-color: #EE6983;
+    vertical-align: middle;
+    text-decoration: line-through;
+    box-shadow: 0 0 4px rgba(8, 7, 16, 0.6);
 }
 
 .buttons {
+    display: flex;
     width: 10%;
     cursor: pointer;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button {
+    color: black;
+    font-size: 23px;
+}
+
+.edit-input {
+    padding: 5px;
+    margin-left: 6px;
+    margin-right: 6px;
+    width: 462.6px;
+    background-color: rgba(255, 255, 255, 0.07);
+    border-radius: 6px;
+    font-weight: 500;
+    color: #850E35;
+    font-size: 16px;
+    letter-spacing: 0.5px;
 }
