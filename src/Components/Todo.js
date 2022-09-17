@@ -4,7 +4,8 @@ import "./Todo.css";
 import Loading from "./Loading.js";
 import ThemeContext from "./Context/ThemeContext";
 
-const url = `https://6319c72e6b4c78d91b4337fb.mockapi.io/todos`
+const url = `https://6319c72e6b4c78d91b4337fb.mockapi.io/todos`;
+
 const todoInitialValue = {
     content: "",
     isCompleted: false, id: "",
@@ -19,7 +20,7 @@ function Todo() {
     const [selectedFilter, setSelectedFilter] = useState("All");
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState("");
-    const {theme} = useContext(ThemeContext);
+    const { theme } = useContext(ThemeContext);
 
     useEffect(() => {
         fetch(url)
@@ -28,11 +29,11 @@ function Todo() {
             .then(() => setIsLoading(false));
     }, [])
 
-
     // ADD
     const addTodo = (e) => {
         e.preventDefault();
 
+        // ERROR
         if (todo.content.trim() === "") {
             setTodo(todoInitialValue);
             return setError("Field cannot be left blank");
@@ -41,6 +42,7 @@ function Todo() {
             return setError("Username must have 4 or more characters");
         }
 
+        // POST
         fetch(url, {
             method: "POST",
             body: JSON.stringify(todo),
@@ -91,6 +93,8 @@ function Todo() {
             isCompleted: false
         } : item));
 
+
+        // PUT
         await fetch(`${url}/${id}`, {
             method: "PUT",
             body: JSON.stringify({ content: changeTodo, isEditible: false, isCompleted: false }),
@@ -100,7 +104,7 @@ function Todo() {
     };
 
     // FILTER
-    const filter = (e) => {
+    const selection = (e) => {
         setSelectedFilter(e.target.value);
     };
 
@@ -111,8 +115,7 @@ function Todo() {
                 <div className={`shape ${theme === "light" ? "" : "dark"}`}></div>
             </div>
 
-            <div className="container">
-
+            <div className="todo-list-page">
 
                 <h1>To Do List</h1>
 
@@ -120,7 +123,7 @@ function Todo() {
                     {(error === "") ? <div ><br /></div> : <div>{error}</div>}
                 </div>
 
-                <form className="todoList">
+                <form className="todo-form">
 
                     <input
                         className={`todo-input ${theme === "light" ? "" : "dark"}`}
@@ -130,7 +133,7 @@ function Todo() {
 
                     <button className={`todo-button ${theme === "light" ? "" : "dark"}`} onClick={addTodo} >Add</button>
 
-                    <select className={`${theme === "light" ? "" : "dark"}`} onChange={filter}>
+                    <select className={`${theme === "light" ? "" : "dark"}`} onChange={selection}>
                         <option className={`${theme === "light" ? "" : "dark"}`} value="All">All</option>
                         <option className={`${theme === "light" ? "" : "dark"}`} value="true" >Completed</option>
                         <option className={`${theme === "light" ? "" : "dark"}`} value="false" >Incompleted</option>
@@ -138,32 +141,41 @@ function Todo() {
 
                 </form>
                 {isLoading ? <Loading /> :
-                    contents.filter(item => item.isCompleted.toString() === selectedFilter || "All" === selectedFilter).map((item) =>
-                        <div className="content" key={item.id} >
+                    contents.filter(item =>
+                        item.isCompleted.toString() === selectedFilter || "All" === selectedFilter).map((item) =>
 
-                            {
-                                !item.isEditible
-                                    ? <div className={`todo ${item.isCompleted} ${theme === "light" ? "" : "dark"}`}
-                                        value={!item.isCompleted}
-                                        onClick={() => isCompleted(item)}>
-                                        {item.content}
-                                    </div>
-
-                                    : <form>
-                                        <input className={`edit-input ${item.isCompleted} ${theme === "light" ? "" : "dark"}`} onChange={(e) => setChangeTodo(e.target.value)}
-                                            value={changeTodo} />
-                                    </form>
-                            }
-                            <div className="buttons" >
+                            <div className="todo-list" key={item.id} >
 
                                 {
                                     !item.isEditible
-                                        ? <FiEdit className={`button ${theme === "light" ? "" : "dark"}`} onClick={() => editTodo(item.id, item.content)} />
-                                        : <FiSave className={`button ${theme === "light" ? "" : "dark"}`} onClick={() => saveTodo(item.id)} />
+                                        ? <div className={`todo ${item.isCompleted} ${theme === "light" ? "" : "dark"}`}
+                                            value={!item.isCompleted}
+                                            onClick={() => isCompleted(item)}>
+                                            {item.content}
+                                        </div>
+
+                                        : <form>
+                                            <input className={`edit-input ${item.isCompleted} ${theme === "light" ? "" : "dark"}`} onChange={(e) => setChangeTodo(e.target.value)}
+                                                value={changeTodo} />
+                                        </form>
                                 }
-                                <FiTrash2 className={`button ${theme === "light" ? "" : "dark"}`} onClick={() => deleteTodo(item.id)} />
-                            </div>
-                        </div>)
+
+                                <div className="ESDbuttons" >
+
+                                    {
+                                        !item.isEditible
+                                            ? <FiEdit
+                                                className={`ESDbutton ${theme === "light" ? "" : "dark"}`}
+                                                onClick={() => editTodo(item.id, item.content)} />
+                                            : <FiSave
+                                                className={`ESDbutton ${theme === "light" ? "" : "dark"}`}
+                                                onClick={() => saveTodo(item.id)} />
+                                    }
+                                    <FiTrash2
+                                        className={`ESDbutton ${theme === "light" ? "" : "dark"}`}
+                                        onClick={() => deleteTodo(item.id)} />
+                                </div>
+                            </div>)
                 }
 
             </div>

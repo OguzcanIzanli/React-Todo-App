@@ -1,24 +1,3 @@
-.welcome {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.logout-button {
-    margin-left: 8px;
-    background-color: white;
-    color: #080710;
-    font-weight: 600;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.logout-button.dark {
-    background-color: #080710;
-    color: lightgray;
-    border-color: lightgray;
-}
-
 h1 {
     text-align: center;
     font-weight: 700;
@@ -32,7 +11,11 @@ h1 {
     width: 580px;
 }
 
-.container {
+input:hover {
+    box-shadow: 0 0 4px rgba(8, 7, 16, 0.6);
+}
+
+.todo-list-page {
     margin-top: 20px;
     backdrop-filter: blur(10px);
     letter-spacing: 0.5px;
@@ -44,7 +27,7 @@ h1 {
     margin: 20px auto;
 }
 
-.todoList {
+.todo-form {
     width: 540px;
     margin: auto;
     display: flex;
@@ -74,49 +57,7 @@ h1 {
     color: #D6D5A8; 
 }
 
-.todo-button {
-    font-size: 14px;
-    width: 10%;
-    height: 26px;
-    margin-top: 15px;
-    margin-right: 50px;
-    background-color: white;
-    color: #080710;
-    font-weight: 600;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.todo-button.dark {
-    background-color: #080710;
-    color: lightgray;
-    border-color: lightgray;
-}
-
-select {
-    background-color: transparent;
-    font-size: 14px;
-    cursor: pointer;
-    height: 25px;
-    width: 20%;
-    margin-top: 15px;
-    font-weight: 600;
-    border-radius: 6px;
-}
-
-select option {
-    background: #FFF5E4;
-}
-
-select.dark {
-    color: #D6D5A8;
-}
-
-select option.dark {
-    background: #1B2430;
-}
-
-.content {
+.todo-list {
     height: 40px;
     display: flex;
     width: 540px;
@@ -135,25 +76,12 @@ select option.dark {
 
 .todo:hover {
     background-color: #EE6983;
-    opacity: 0.5;
+    opacity: 0.7;
     box-shadow: 0 0 4px rgba(8, 7, 16, 0.6);
 }
 
 .todo.dark:hover {
     background-color: #816797;
-}
-
-button:hover {
-    background-color: lightgrey;
-    box-shadow: 0 0 4px rgba(8, 7, 16, 0.6);
-}
-
-select:hover {
-    box-shadow: 0 0 4px rgba(8, 7, 16, 0.6);
-}
-
-input:hover {
-    box-shadow: 0 0 4px rgba(8, 7, 16, 0.6);
 }
 
 .todo.true {
@@ -164,36 +92,15 @@ input:hover {
     box-shadow: 0 0 4px rgba(8, 7, 16, 0.6);
 }
 
+.todo.true:hover {
+opacity: 0.5;
+}
+
 .todo.true.dark {
     background-color: #816797;
 }
 
-.buttons {
-    display: flex;
-    width: 10%;
-    cursor: pointer;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.button {
-    color: black;
-    font-size: 23px;
-}
-
-.button.dark {
-    color: lightgrey;
-}
-
-.button:hover {
-    background-color: lightgrey;
-    border-radius: 6px;
-    box-shadow: 0 0 4px rgba(8, 7, 16, 0.6);
-}
-
-.button.dark:hover {
-    background-color: darkslategrey;
-}
+/* Edit Form Input */
 
 .edit-input {
     padding: 5px;
@@ -212,18 +119,92 @@ input:hover {
     color: #D6D5A8; 
 }
 
-.theme-button {
-    position: absolute;
-    margin-left: 8px;
-    background-color: white;
+/* Buttons */
+
+button {
     color: #080710;
-    font-weight: 600;
-    border-radius: 5px;
+    background-color: white;
     cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
 }
 
-.theme-button.dark {
-    background-color: #080710;
+button.dark {
+    background-color: #08071086;
     color: lightgray;
     border-color: lightgray;
+}
+
+button:hover {
+    opacity: 0.8;
+    box-shadow: 0 0 4px rgba(8, 7, 16, 0.6);
+}
+
+/* To Do Add Button */
+
+.todo-button {
+    width: 10%;
+    height: 26px;
+    margin-top: 15px;
+    margin-right: 50px;
+}
+
+/* ESD Buttons */
+
+.ESDbuttons {
+    display: flex;
+    width: 10%;
+    cursor: pointer;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ESDbutton {
+    color: #08071086;
+    font-size: 23px;
+}
+
+.ESDbutton.dark {
+    color: lightgrey;
+}
+
+.ESDbutton:hover {
+    background-color: lightgrey;
+    border-radius: 6px;
+    box-shadow: 0 0 4px rgba(8, 7, 16, 0.6);
+}
+
+.ESDbutton.dark:hover {
+    background-color: darkslategrey;
+}
+
+
+/* Filter Select */
+
+select {
+    background-color: transparent;
+    font-size: 14px;
+    cursor: pointer;
+    height: 25px;
+    width: 20%;
+    margin-top: 15px;
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+select.dark {
+    color: #D6D5A8;
+}
+
+select:hover {
+    box-shadow: 0 0 4px rgba(8, 7, 16, 0.6);
+}
+
+select option {
+    background: #FFF5E4;
+}
+
+select option.dark {
+    background: #1B2430;
 }

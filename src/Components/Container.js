@@ -1,7 +1,8 @@
 import LoginForm from "./Login";
 import Todo from "./Todo"
-import { useState, useContext} from "react";
+import { useState, useContext } from "react";
 import ThemeContext from "./Context/ThemeContext";
+import "./Container.css"
 
 function Container() {
 
@@ -24,17 +25,30 @@ function Container() {
   return (
     <div className={`App ${theme === "light" ? "" : "dark"}`}>
 
-      <button className={`theme-button ${theme === "light" ? "" : "dark"}`} onClick={() => setTheme(theme === "light" ? "dark" : "light")} >Change Theme</button>
+      <button
+        className={`theme-button ${theme === "light" ? "" : "dark"}`}
+        onClick={() => setTheme(theme === "light" ? "dark" : "light")} >Change Theme
+      </button>
 
       {(user.username !== "") ? (
         <div>
           <div className="welcome">
+            
             Welcome, {user.username}
+
             <br />
-            <button className={`logout-button ${theme === "light" ? "" : "dark"}`} onClick={Logout}>Logout</button>
+
+            <button
+              className={`logout-button ${theme === "light" ? "" : "dark"}`}
+              onClick={Logout}>Logout
+            </button>
+
           </div>
+
           <Todo />
+
         </div>
+
       ) : (<LoginForm Login={Login} />)}
     </div>
   );

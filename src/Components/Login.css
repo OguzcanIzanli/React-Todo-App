@@ -1,23 +1,50 @@
-.App {
-    background-color: #FFF5E4;
-    color: #850E35;
-    font-family: 'Poppins', sans-serif;
-    position:fixed;
-    top:0;
-    left:0;
-    width: 100%;
-    height: 100%;
+/* Background */
+
+.background {
+    width: 430px;
+    height: 520px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
 }
 
-.theme-button {
-    display: flex;
+.background .shape {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
 }
 
-.App.dark {
-    background-color: #1B2430;
-    color: #D6D5A8;
+.shape:first-child {
+    background: linear-gradient(#FFC4C4,
+            #EE6983);
+    left: -80px;
+    top: 30px;
 }
 
+.shape.dark:first-child {
+    background: linear-gradient(#816797,
+            #51557E);
+}
+
+.shape:last-child {
+    background: linear-gradient(to right,
+            #AF0171,
+            #790252);
+    right: -30px;
+    bottom: 20px;
+}
+
+.shape.dark:last-child {
+    background: linear-gradient(to right,
+            #51557E,
+            #1B2430);
+    right: -30px;
+    bottom: 20px;
+}
+
+/* Login */
 
 .login {
     display: flex;
@@ -36,58 +63,6 @@
     box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
     padding: 35px;
     letter-spacing: 0.5px;
-}
-
-.background{
-    width: 430px;
-    height: 520px;
-    position: absolute;
-    transform: translate(-50%,-50%);
-    left: 50%;
-    top: 50%;
-}
-
-.background .shape{
-    height: 200px;
-    width: 200px;
-    position: absolute;
-    border-radius: 50%;
-}
-
-.shape:first-child{
-    background: linear-gradient(
-        #FFC4C4,
-        #EE6983
-    );
-    left: -80px;
-    top: 30px;
-}
-
-.shape.dark:first-child{
-    background: linear-gradient(
-        #816797,
-        #51557E
-    );
-}
-
-.shape:last-child{
-    background: linear-gradient(
-        to right,
-        #AF0171,
-        #790252
-    );
-    right: -30px;
-    bottom: 20px;
-}
-
-.shape.dark:last-child{
-    background: linear-gradient(
-        to right,
-        #51557E,
-        #1B2430
-    );
-    right: -30px;
-    bottom: 20px;
 }
 
 .login-form h3 {
@@ -118,20 +93,11 @@ label {
     font-weight: 500;
 }
 
+/* Button */
+
 .login-button {
     display: flex;
     margin-top: 20px;
-    background-color: white;
-    color: #080710;
     padding: 8px 15px;
     font-size: 18px;
-    font-weight: 600;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.login-button.dark{
-    background-color: #08071086;
-    color: lightgray;
-    border-color: lightgray; 
 }

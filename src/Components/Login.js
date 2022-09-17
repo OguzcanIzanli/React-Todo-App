@@ -2,8 +2,6 @@ import { useState, useContext } from "react";
 import "./Login.css";
 import ThemeContext from "./Context/ThemeContext";
 
-
-
 function LoginForm({ Login }) {
 
     const [user, setUser] = useState({ username: "" });

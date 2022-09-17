@@ -11,7 +11,7 @@ function Loading() {
             <br />
             <div className="loading-screen">
                 <div className="balls" >
-                    <div className={`ball ball1 ${theme === "light" ? "" : "dark"}`} ></div>
+                    <div className={`ball ${theme === "light" ? "" : "dark"}`} ></div>
                     <div className={`ball ball2 ${theme === "light" ? "" : "dark"}`}></div>
                     <div className={`ball ball3 ${theme === "light" ? "" : "dark"}`}></div>
                 </div>
