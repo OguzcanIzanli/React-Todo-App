@@ -23,6 +23,10 @@
     animation: ball 0.5s ease infinite alternate;
 }
 
+.ball.dark {
+    background-color: #D6D5A8;
+}
+
 .ball2 {
     animation-delay: 0.1s;
 }

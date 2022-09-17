@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { FiTrash2, FiEdit, FiSave } from "react-icons/fi";
 import "./Todo.css";
-import Loading from "../Loading/index.js";
+import Loading from "./Loading.js";
+import ThemeContext from "./Context/ThemeContext";
 
 const url = `https://6319c72e6b4c78d91b4337fb.mockapi.io/todos`
 const todoInitialValue = {
@@ -18,6 +19,7 @@ function Todo() {
     const [selectedFilter, setSelectedFilter] = useState("All");
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState("");
+    const {theme} = useContext(ThemeContext);
 
     useEffect(() => {
         fetch(url)
@@ -105,8 +107,8 @@ function Todo() {
     return (
         <>
             <div className="background">
-                <div className="shape"></div>
-                <div className="shape"></div>
+                <div className={`shape ${theme === "light" ? "" : "dark"}`}></div>
+                <div className={`shape ${theme === "light" ? "" : "dark"}`}></div>
             </div>
 
             <div className="container">
@@ -121,17 +123,17 @@ function Todo() {
                 <form className="todoList">
 
                     <input
-                        className="todo-input"
+                        className={`todo-input ${theme === "light" ? "" : "dark"}`}
                         onChange={(e) => setTodo({ ...todo, content: e.target.value })}
                         value={todo.content}
                         placeholder="A New To Do" />
 
-                    <button className="todo-button" onClick={addTodo} >Add</button>
+                    <button className={`todo-button ${theme === "light" ? "" : "dark"}`} onClick={addTodo} >Add</button>
 
-                    <select onChange={filter}>
-                        <option value="All">All</option>
-                        <option value="true" >Completed</option>
-                        <option value="false" >Incompleted</option>
+                    <select className={`${theme === "light" ? "" : "dark"}`} onChange={filter}>
+                        <option className={`${theme === "light" ? "" : "dark"}`} value="All">All</option>
+                        <option className={`${theme === "light" ? "" : "dark"}`} value="true" >Completed</option>
+                        <option className={`${theme === "light" ? "" : "dark"}`} value="false" >Incompleted</option>
                     </select>
 
                 </form>
@@ -141,14 +143,14 @@ function Todo() {
 
                             {
                                 !item.isEditible
-                                    ? <div className={`todo ${item.isCompleted}`}
+                                    ? <div className={`todo ${item.isCompleted} ${theme === "light" ? "" : "dark"}`}
                                         value={!item.isCompleted}
                                         onClick={() => isCompleted(item)}>
                                         {item.content}
                                     </div>
 
                                     : <form>
-                                        <input className="edit-input" onChange={(e) => setChangeTodo(e.target.value)}
+                                        <input className={`edit-input ${item.isCompleted} ${theme === "light" ? "" : "dark"}`} onChange={(e) => setChangeTodo(e.target.value)}
                                             value={changeTodo} />
                                     </form>
                             }
@@ -156,10 +158,10 @@ function Todo() {
 
                                 {
                                     !item.isEditible
-                                        ? <FiEdit className="button" onClick={() => editTodo(item.id, item.content)} />
-                                        : <FiSave className="button" onClick={() => saveTodo(item.id)} />
+                                        ? <FiEdit className={`button ${theme === "light" ? "" : "dark"}`} onClick={() => editTodo(item.id, item.content)} />
+                                        : <FiSave className={`button ${theme === "light" ? "" : "dark"}`} onClick={() => saveTodo(item.id)} />
                                 }
-                                <FiTrash2 className="button" onClick={() => deleteTodo(item.id)} />
+                                <FiTrash2 className={`button ${theme === "light" ? "" : "dark"}`} onClick={() => deleteTodo(item.id)} />
                             </div>
                         </div>)
                 }

@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "./Login.css";
+import ThemeContext from "./Context/ThemeContext";
+
+
 
 function LoginForm({ Login }) {
 
     const [user, setUser] = useState({ username: "" });
     const [error, setError] = useState("");
+    const {theme} = useContext(ThemeContext);
 
     const submitHandle = (e) => {
         e.preventDefault();
@@ -24,8 +28,8 @@ function LoginForm({ Login }) {
         <div className="login">
 
             <div className="background">
-                <div className="shape"></div>
-                <div className="shape"></div>
+                <div className={`shape ${theme === "light" ? "" : "dark"}`}></div>
+                <div className={`shape ${theme === "light" ? "" : "dark"}`}></div>
             </div>
 
             <form className="login-form" onSubmit={submitHandle} >
@@ -41,7 +45,7 @@ function LoginForm({ Login }) {
                     onChange={(e) => setUser({ username: e.target.value })}
                     value={user.username} />
 
-                <button className="login-button" >Log In</button>
+                <button className={`login-button ${theme === "light" ? "" : "dark"}`} >Log In</button>
 
             </form>
         </div>

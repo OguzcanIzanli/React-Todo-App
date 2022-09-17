@@ -4,13 +4,19 @@
     align-items: center;
 }
 
-.welcome-button {
+.logout-button {
     margin-left: 8px;
     background-color: white;
     color: #080710;
     font-weight: 600;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.logout-button.dark {
+    background-color: #080710;
+    color: lightgray;
+    border-color: lightgray;
 }
 
 h1 {
@@ -60,6 +66,14 @@ h1 {
     font-weight: 500;
 }
 
+.todo-input.dark::placeholder {
+    color: #D6D5A8;
+}
+
+.todo-input.dark {
+    color: #D6D5A8; 
+}
+
 .todo-button {
     font-size: 14px;
     width: 10%;
@@ -73,6 +87,12 @@ h1 {
     cursor: pointer;
 }
 
+.todo-button.dark {
+    background-color: #080710;
+    color: lightgray;
+    border-color: lightgray;
+}
+
 select {
     background-color: transparent;
     font-size: 14px;
@@ -82,6 +102,18 @@ select {
     margin-top: 15px;
     font-weight: 600;
     border-radius: 6px;
+}
+
+select option {
+    background: #FFF5E4;
+}
+
+select.dark {
+    color: #D6D5A8;
+}
+
+select option.dark {
+    background: #1B2430;
 }
 
 .content {
@@ -101,12 +133,39 @@ select {
     padding: 4px;
 }
 
+.todo:hover {
+    background-color: #EE6983;
+    opacity: 0.5;
+    box-shadow: 0 0 4px rgba(8, 7, 16, 0.6);
+}
+
+.todo.dark:hover {
+    background-color: #816797;
+}
+
+button:hover {
+    background-color: lightgrey;
+    box-shadow: 0 0 4px rgba(8, 7, 16, 0.6);
+}
+
+select:hover {
+    box-shadow: 0 0 4px rgba(8, 7, 16, 0.6);
+}
+
+input:hover {
+    box-shadow: 0 0 4px rgba(8, 7, 16, 0.6);
+}
+
 .todo.true {
     opacity: 0.7;
     background-color: #EE6983;
     vertical-align: middle;
     text-decoration: line-through;
     box-shadow: 0 0 4px rgba(8, 7, 16, 0.6);
+}
+
+.todo.true.dark {
+    background-color: #816797;
 }
 
 .buttons {
@@ -122,6 +181,20 @@ select {
     font-size: 23px;
 }
 
+.button.dark {
+    color: lightgrey;
+}
+
+.button:hover {
+    background-color: lightgrey;
+    border-radius: 6px;
+    box-shadow: 0 0 4px rgba(8, 7, 16, 0.6);
+}
+
+.button.dark:hover {
+    background-color: darkslategrey;
+}
+
 .edit-input {
     padding: 5px;
     margin-left: 6px;
@@ -133,4 +206,24 @@ select {
     color: #850E35;
     font-size: 16px;
     letter-spacing: 0.5px;
+}
+
+.edit-input.dark{
+    color: #D6D5A8; 
+}
+
+.theme-button {
+    position: absolute;
+    margin-left: 8px;
+    background-color: white;
+    color: #080710;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.theme-button.dark {
+    background-color: #080710;
+    color: lightgray;
+    border-color: lightgray;
 }
