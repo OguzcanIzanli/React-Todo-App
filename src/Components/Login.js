@@ -6,7 +6,7 @@ function LoginForm({ Login }) {
 
     const [user, setUser] = useState({ username: "" });
     const [error, setError] = useState("");
-    const {theme} = useContext(ThemeContext);
+    const { theme } = useContext(ThemeContext);
 
     const submitHandle = (e) => {
         e.preventDefault();
@@ -38,7 +38,8 @@ function LoginForm({ Login }) {
 
                 <label htmlFor="username">Username</label>
 
-                <input className="login-input"
+                <input
+                    className={`login-input ${theme === "light" ? "" : "dark"}`}
                     type="text"
                     onChange={(e) => setUser({ username: e.target.value })}
                     value={user.username} />
