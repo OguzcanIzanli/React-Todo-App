@@ -36,7 +36,7 @@ function LoginForm({ Login }) {
 
                 {(error === "") ? <div><br /></div> : <div >{error}</div>}
 
-                <label for="username">Username</label>
+                <label htmlFor="username">Username</label>
 
                 <input className="login-input"
                     type="text"

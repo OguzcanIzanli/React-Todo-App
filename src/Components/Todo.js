@@ -26,7 +26,8 @@ function Todo() {
         fetch(url)
             .then(res => res.json())
             .then(data => setContents(data))
-            .then(() => setIsLoading(false));
+            .then(() => setIsLoading(false))
+            .then(() => console.log("Mounted"));
     }, [])
 
     // ADD
@@ -65,7 +66,7 @@ function Todo() {
             method: "PUT",
             body: JSON.stringify({ isCompleted: !clickedItem.isCompleted }),
             headers: { "Content-type": "application/json; charset=UTF-8" }
-        }).then(res => res.json()).then(res => console.log(JSON.stringify(res)));
+        }).then(res => res.json()).then(res => console.log(JSON.stringify(res)))
     };
 
 
